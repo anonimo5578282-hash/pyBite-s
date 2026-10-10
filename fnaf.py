@@ -1,27 +1,57 @@
-import os
+mport os
 import time
 import sys
 
 mapa = [
-     "################################",
-     "#               #         #    #",
-     "#               #         #G  F#",
-     "#         #######         #    #",
-     "#                         #0000#",
-     "@              #####      #    #",
-     "@                         #    #",
-     "#      ######          ####    #",
-     "#                              #",
-     "######                 ####    #",
-     "#    0                         #",
-     "################################",
+     "##################################################################################################################",
+     "#             $$$     #                                             ===========           ##                     #",
+     "#                  $$$#                   #              #                                ##  G                F #",
+     "#             #########               #########  ##########         $$$     $$$           ##                     #",
+     "#                                     #                   #                               ##000000000000000000000#",
+     "@                                     #   $$$   $$$  $$$  #         $$$     $$$           ##                     #",
+     "@                                                         #                               ##                     #",
+     "#      ######                             $$$   $$$  $$$            $$$     $$$   ##########                     #",
+     "#                                                                                                                #",
+     "#                                         $$$   $$$  $$$                                                         #",
+     "#                                     #                                                                          #",
+     "#####                                 #   $$$   $$$  $$$  #                       ##########                     #",
+     "#                                     #                   #                                #                     #",
+     "#                                     #                   #                                #                     #",
+     "#                                     #      #    #       #                                #                     #",
+     "########################0000##################    ##############                ############                     #",
+     "#          #                                 #    #                                        #                     #",
+     "#          0                                                                                                     #",
+     "#       $$$#                   $$$                                                                               #",
+     "##################################################################################################################",
+]
 
+sandbox = [
+     "##################################################################################################################",
+     "#             $$$     #                                             ===========           ##                     #",
+     "#                  $$$#                   #              #                                ##  G                F #",
+     "#             #########               #########  ##########         $$$     $$$           ##                     #",
+     "#                                     #                   #                               ##000000000000000000000#",
+     "@                                     #   $$$   $$$  $$$  #         $$$     $$$           ##                     #",
+     "@                                                         #                               ##                     #",
+     "#      ######                             $$$   $$$  $$$            $$$     $$$   ##########                     #",
+     "#                                                                                                                #",
+     "#                                         $$$   $$$  $$$                                                         #",
+     "#                                     #                                                                          #",
+     "#####                                 #   $$$   $$$  $$$  #                       ##########                     #",
+     "#                                     #                   #                                #                     #",
+     "#                                     #                   #                                #                     #",
+     "#                                     #      #    #       #                                #                     #",
+     "########################0000##################    ##############                ############                     #",
+     "#          #                                 #    #                                        #                     #",
+     "#          0                                                                                                     #",
+     "#       $$$#                   $$$                                                                               #",
+     "##################################################################################################################",
 ]
 
 começo = [
     "                                                        ",
     "                    @@@@@@@@@@@@@@@@@@@@@               ",
-    "                    @@@@P y B i t e @@@@@               ",
+    "                    @@@@ P y B i t e @@@@               ",
     "                    @@@@@@@@@@@@@@@@@@@@@               ",
     "   #################@@@@@@@@@@@@@@@@@@@@@############## ",
     "   #################################################### ",
@@ -138,16 +168,16 @@ secret2 = [
     "    ###     ------     ###   ",
     "      #    /     |_____#     ",
     "       #   |L=====/          ",
-    "        #   |=====           ",
+    "        #   \=====           ",
     "        ####|             ",
     "          #     #         ",
     ]
 
 fundy = ["🐺"]
-fundy = [2, 10]
+fundy = [2, 18]
 
 estranho = ["🤖"]
-estranho = [10, 1]
+estranho = [18, 1]
 
 guarda = ["👮"]
 guarda = [5, 1]
@@ -162,7 +192,7 @@ def poder_andar(linha, coluna):
     if coluna < 0 or coluna >= len(mapa[linha]):
         return False
 
-    if mapa[linha][coluna] in "#&@":
+    if mapa[linha][coluna] in "#&@$":
         return False
 
     return True
@@ -186,6 +216,25 @@ def desenhar_mapa():
 
         print(texto)
 
+def desenhar_sand():
+    for linha in range(len(sandbox)):
+        texto = ""
+
+        for coluna in range(len(sandbox[linha])):
+            if [linha, coluna] == guarda:
+                texto += "👮"
+
+            elif [linha, coluna] == fundy:
+                texto += "🐺"
+
+            elif [linha, coluna] == estranho:
+                  texto += "🤖"
+
+            else:
+                texto += sandbox[linha][coluna]
+
+        print(texto)
+
 def jumpscare():
     os.system("clear")
     for linhas in jumpscare0:
@@ -205,6 +254,9 @@ def jumpscare():
     for linhas in jumpscare2:
         print(linhas)
         time.sleep(0.1)
+        os.system("clear")
+
+    morte()
 
 def secret():
     os.system("clear")
@@ -226,90 +278,60 @@ def secret():
         print(linhas)
         time.sleep(0.1)
 
+    morte()
+
 def morte():
     time.sleep(1)
     os.system("clear")
+    print("\033[91m")
     for linhas in morrer:
         print(linhas)
+    print("\033[0m")
 
 def inicio():
     os.system("clear")
     for linhas in começo:
         print(linhas)
         time.sleep(0.1)
+
+os.system("clear")
+print("\033[91m")
+print("""
+█▓▀▀██ █▓▀▀   █▓▀▀   █▓▀▀   █▓▀▀   █▓▀▀   █▓▀▀██ █▓▀▀  ▀▀        █▓▀▀     ▀▀█▓▀▀██ █▓     █▓ ▄▓▀▀█▄ █▓▀▀  
+▓▒     ▓▒   ░ ▓▒▄▄ ░ ▓▒   ░ ▓▒   ░ ▓▒     ▓▒     ▓▒   ░   ░      ▓▒         ▓▒     ▓▒   ░ ▓▒ ▓▒   ░ ▓▒    
+▒░     ▒░▀▀░▒ ▒░▀▄   ▒░  ░▒ ▒░▀▀░▒ ▒░ ▀░▒ ▒░▀    ▒░  ░▒  ░▒      ▒░▀▀░▒     ▒░     ▒░  ░▒ ▒░ ▒░  ░▒ ▒░▀▀░▒
+░      ░   ▒▓ ░   ▒▓ ░   ▒▓ ░   ▒▓ ░   ▒▓ ░      ░   ▒▓  ▒▓          ▒▓     ░█     ░   ▒▓ ░  ░   ▒▓     ▒▓
+  ▄▄▓█     ▓█     ▓█     ▓█     ▓█   ▄▄▓█   ▄▄▓█     ▓█  ▓█        ▄▄▓█     ██       ▄▄▓█    ▀ ▄▄▓▀   ▄▄▓█
+<apresenta>
+""")
+print("\033[0m")
+time.sleep(5)
+os.system("clear")
+print("""\033[93m
+                                         ▐▓▓▌
+▐▓▓▓▓▌▐▓▌ ▐▓▌▐▓▓▓▓▌ ▐▓▓▓▓▓▌▐▓▓▓▓▓▌▐▓▓▓▓▌▐▓▓▌▐▓▓▓▓▌
+▐▓▌▐▓▌ ▐▓▐▓▌ ▐▓▌ ▐▓▌  ▐▓▌    ▐▓▌  ▐▓▌       ▐▓▌   
+▐▓▓▓▓▌  ▐▓▌  ▐▓▓▓▓▓▌  ▐▓▌    ▐▓▌  ▐▓▓▓▌     ▐▓▓▓▓▌
+▐▓▌     ▐▓▌  ▐▓▌ ▐▓▌  ▐▓▌    ▐▓▌  ▐▓▌          ▐▓▌
+▐▓▌     ▐▓▌  ▐▓▓▓▓▌ ▐▓▓▓▓▓▌  ▐▓▌  ▐▓▓▓▓▌    ▐▓▓▓▓▌
+""")
 
 print("bem vindo ao restalrante PyBite's")
 time.sleep(1)
 print("vc é o novo segurança do restaurante")
 time.sleep(1)
-print("digite J para jogar")
-print("digite C para ver os créditos")
-print("digite E para ver os extras")
-print("digite S para sair")
-print("digite L para ver a lore do jogo (nem ta pronta ainda)")
+print("  ")
+print("      |^| digite J para jogar")
+print("      /~/ digite C para ver os créditos")
+print("       !  digite E para ver os extras")
+print("      ->  digite S para sair")
+print("      °.° digite L para ver a lore do jogo (nem ta pronta ainda)")
+print("      [$] digite P pra se você quiser apoiar o criador com 10 reais pra baixo")
+print("     [<>] digite X para sandbox")
 time.sleep(1)
+print("   ")
 escolher = input("escreva aqui: ").upper()
-
-def secret():
-    os.system("clear")
-
-    for linha in secret0:
-        print(linha)
-
-    time.sleep(2)
-
-def jumpscare():
-    os.system("clear")
-    for linhas in jumpscare0:
-        print(linhas)
-        time.sleep(0.1)
-
-    time.sleep(1)
-    os.system("clear")
-
-    for linhas in jumpscare1:
-        print(linhas)
-        time.sleep(0.2)
-
-    time.sleep(2)
-    os.system("clear")
-
-    for linhas in jumpscare2:
-        print(linhas)
-        time.sleep(0.1)
-
-def secret():
-    os.system("clear")
-    for linhas in secret0:
-        print(linhas)
-        time.sleep(0.1)
-
-    time.sleep(1)
-    os.system("clear")
-
-    for linhas in secret1:
-        print(linhas)
-        time.sleep(0.2)
-
-    time.sleep(2)
-    os.system("clear")
-
-    for linhas in secret2:
-        print(linhas)
-        time.sleep(0.1)
-
-
-def morte():
-    time.sleep(1)
-    os.system("clear")
-    for linhas in morrer:
-        print(linhas)
-
-def inicio():
-    os.system("clear")
-    for linhas in começo:
-        print(linhas)
-        time.sleep(0.1)
+print("\033[0m")
 
 if escolher == "J":
     inicio()
@@ -337,6 +359,76 @@ if escolher == "J":
         nova_coluna += 1
 
      if comando == "g":
+        mapa = [linha.replace("&", "0") for linha in mapa]
+
+     elif comando == "f":
+         mapa = [linha.replace("0", "&") for linha in mapa]
+
+     if poder_andar(nova_linha, nova_coluna):
+        guarda[0] = nova_linha
+        guarda[1] = nova_coluna
+
+     if guarda == estranho:
+      secret()
+      break
+
+     if guarda == fundy:
+      jumpscare()
+      break
+
+elif escolher == "C":
+    print("\033[96m")
+    print("créditos:")
+    time.sleep(1)
+    print("criador: eu")
+    time.sleep(1)
+    print("programa feito em Python")
+    time.sleep(1)
+    print("meu tiktok: @carnagem1hk")
+    time.sleep(1)
+    print("\033[0m")
+    os.system("exit")
+elif escolher == "P":
+    print("\033[42m")
+    print("meu numero é +55 48984850927")
+    time.sleep(1)
+    print("não é obrigatório pagar mas se tu quiser")
+    time.sleep(1)
+    print("só mande menos 10 rais por que eu não gosto de prejudicar os outros")
+    print("\033[0m")
+
+elif escolher == "X":
+    inicio()
+    time.sleep(1)
+
+    while True:
+     os.system("clear")
+     desenhar_sand()
+
+     comando = input("Digite W/A/S/D: ").lower()
+
+     nova_linha = guarda[0]
+     nova_coluna = guarda[1]
+
+     if comando == "w":
+        nova_linha -= 1
+
+     elif comando == "a":
+        nova_coluna -= 1
+
+     elif comando == "s":
+        nova_linha += 1
+
+     elif comando == "d":
+        nova_coluna += 1
+
+     if comando == "11002":
+         morte()
+
+     elif comando == "54364":
+         inicio()
+
+     if comando == "g":
         mapa = [linha.replace("0", "&") for linha in mapa]
 
      elif comando == "f":
@@ -353,17 +445,6 @@ if escolher == "J":
      if guarda == fundy:
       jumpscare()
       break
-
-elif escolher == "C":
-    print("créditos:")
-    time.sleep(1)
-    print("criador: eu")
-    time.sleep(1)
-    print("programa feito em Python")
-    time.sleep(1)
-    print("meu tiktok: @carnagem1hk")
-    time.sleep(1)
-    os.system("exit")
 
 elif escolher == "E":
     print("extras:")
